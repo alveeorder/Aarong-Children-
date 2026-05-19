@@ -3,73 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aarong - Children Duty Roster</title>
+<title>Children Duty Roster</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Updock&family=Barlow:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap');
 
   :root {
-    --aarong-green: #0C4B33;      /* Aarong Signature Green */
-    --aarong-gold: #D4AF37;       /* Metallic Gold */
-    --aarong-cream: #F9F6F0;      /* Premium Cream Background */
-    --green-mid: #1e6b1e;
-    --green-light: #a3ffa3;
-    --green-pale: #d4f7d4;
-    --red-light: #ffe3e3;
-    --blue-light: #cfe2ff;
+    --green-dark: #1a6b1a;
+    --green-mid: #2d8a2d;
+    --green-light: #90EE90;
+    --green-pale: #c8f0c8;
+    --yellow: #FFD700;
+    --orange: #FF8C00;
+    --red-light: #ffb3b3;
+    --blue-light: #b3d9ff;
+    --purple: #9b59b6;
     --white: #ffffff;
-    --border: #444;
+    --border: #555;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--aarong-cream);
+    background: #1a1a2e;
     font-family: 'Barlow', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    overflow-x: hidden;
   }
 
-  /* ===== AARONG BRANDING HEADER ===== */
-  .brand-header {
-    text-align: center;
-    margin-bottom: 25px;
-    border-bottom: 2px solid var(--aarong-gold);
-    padding-bottom: 15px;
-    width: 100%;
-    max-width: 860px;
+  h1 {
+    font-family: 'Teko', sans-serif;
+    color: var(--yellow);
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
   }
 
-  .brand-logo {
-    font-family: 'Cinzel', serif;
-    color: var(--aarong-green);
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 8px;
-    line-height: 1;
-    text-transform: uppercase;
-  }
-
-  .brand-tagline {
-    font-family: 'Updock', cursive;
-    color: var(--aarong-gold);
-    font-size: 1.8rem;
-    margin-top: -5px;
-  }
-
-  .roster-title {
-    font-family: 'Cinzel', serif;
-    color: #333;
-    font-size: 1.1rem;
-    letter-spacing: 3px;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-
-  /* ===== CONTROLS ===== */
   .controls {
     display: flex;
     gap: 12px;
@@ -80,104 +52,78 @@
   }
 
   .controls label {
-    color: var(--aarong-green);
-    font-weight: 700;
+    color: var(--green-light);
+    font-weight: 600;
     font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
-  .controls select, .controls input[type="date"] {
-    background: var(--white);
-    color: var(--aarong-green);
-    border: 2px solid var(--aarong-green);
-    border-radius: 4px;
-    padding: 8px 14px;
+  .controls select {
+    background: #0f3d0f;
+    color: var(--yellow);
+    border: 2px solid var(--green-mid);
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .controls input[type="date"] {
+    background: #0f3d0f;
+    color: var(--yellow);
+    border: 2px solid var(--green-mid);
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .controls button {
+    background: var(--green-dark);
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    border-radius: 6px;
+    padding: 7px 18px;
     font-size: 1rem;
     font-weight: 600;
     font-family: 'Barlow', sans-serif;
     cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
+    transition: background 0.2s;
   }
+  .controls button:hover { background: var(--green-mid); }
 
-  .controls select:focus, .controls input[type="date"]:focus {
-    border-color: var(--aarong-gold);
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-  }
-
-  .controls button {
-    background: var(--aarong-green);
-    color: var(--white);
-    border: 1px solid var(--aarong-gold);
-    border-radius: 4px;
-    padding: 9px 20px;
-    font-size: 1rem;
-    font-weight: 700;
-    font-family: 'Cinzel', serif;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.25s ease;
-  }
-  
-  .controls button:hover { 
-    background: #062b1d; 
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(12, 75, 51, 0.3);
-  }
-
-  .btn-download {
-    background: var(--aarong-gold) !important;
-    color: var(--aarong-green) !important;
-    border-color: var(--aarong-green) !important;
-  }
-  .btn-download:hover {
-    background: #bc982e !important;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3) !important;
-  }
-
-  /* ===== MAIN ROSTER CARD ===== */
   .roster-card {
-    background: var(--white);
-    border: 4px solid var(--aarong-green);
-    border-radius: 4px;
+    background: #e8f5e8;
+    border: 3px solid var(--green-dark);
+    border-radius: 10px;
     overflow: hidden;
     width: 100%;
     max-width: 860px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    opacity: 0;
-  }
-
-  .roster-card.run-animation {
-    animation: cardEntrance 0.6s ease-out forwards;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
 
   .roster-body {
     display: flex;
-    flex-direction: row;
+    gap: 0;
   }
 
-  @media (max-width: 768px) {
-    .roster-body { flex-direction: column; }
-    .left-section { border-right: none !important; border-bottom: 4px solid var(--aarong-green); }
-  }
-
-  /* ===== LEFT SECTION ===== */
   .left-section {
     flex: 1.1;
-    border-right: 4px solid var(--aarong-green);
+    border-right: 3px solid var(--green-dark);
   }
 
   .section-header {
-    background: var(--aarong-green);
+    background: var(--green-dark);
     color: var(--white);
     text-align: center;
-    font-family: 'Cinzel', serif;
+    font-family: 'Teko', sans-serif;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    padding: 10px 0;
-    font-weight: 600;
-    border-bottom: 2px solid var(--aarong-gold);
+    padding: 6px 0;
+    border-bottom: 2px solid #333;
   }
 
   .children-table {
@@ -186,54 +132,43 @@
   }
 
   .children-table th {
-    background: #e2ede8;
-    color: var(--aarong-green);
+    background: #b8e8b8;
+    color: #1a1a1a;
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 10px;
-    border: 1px solid #bbb;
+    font-size: 0.88rem;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
     text-align: center;
-    font-family: 'Cinzel', serif;
   }
 
   .children-table td {
-    padding: 7px 10px;
-    border: 1px solid #ccc;
-    font-size: 0.95rem;
-    color: #222;
-    font-weight: 600;
+    padding: 4px 8px;
+    border: 1px solid #aaa;
+    font-size: 0.87rem;
     text-align: center;
   }
 
-  .run-animation .children-table tbody tr {
-    animation: rowAppear 0.3s ease-out backwards;
-  }
+  .row-morning { background: var(--green-pale); }
+  .row-evening { background: var(--red-light); }
+  .row-zero { background: #e0e0e0; color: #888; }
+  .row-total-label { background: var(--blue-light); font-weight: 700; }
+  .row-grand { background: var(--yellow); font-weight: 700; }
 
-  .row-morning { background: #f0f7f4; }
-  .row-both { background: #fff3e0; }
-  .row-evening { background: #fff5f5; }
-  .row-zero { background: #f5f5f5; color: #888; }
-  .row-total-label { background: #e3f2fd; font-weight: 700; }
-  .row-grand { background: #fff9c4; font-weight: 700; color: var(--aarong-green); }
-
-  /* ===== RIGHT SECTION ===== */
   .right-section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: #fafafa;
   }
 
   .offday-header {
-    background: var(--aarong-gold);
-    color: var(--aarong-green);
+    background: var(--yellow);
+    color: #222;
     text-align: center;
-    font-family: 'Cinzel', serif;
+    font-family: 'Teko', sans-serif;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    padding: 10px 0;
-    font-weight: 600;
-    border-bottom: 2px solid var(--aarong-green);
+    padding: 6px 0;
+    border-bottom: 2px solid #333;
   }
 
   .right-table {
@@ -242,190 +177,165 @@
   }
 
   .right-table th {
-    background: #e2ede8;
-    color: var(--aarong-green);
+    background: #b8e8b8;
+    color: #1a1a1a;
     font-weight: 700;
-    font-size: 0.95rem;
-    padding: 10px;
-    border: 1px solid #bbb;
+    font-size: 0.88rem;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
     text-align: center;
-    font-family: 'Cinzel', serif;
   }
 
   .right-table td {
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    font-size: 0.95rem;
-    color: #222;
-    font-weight: 600;
+    padding: 5px 10px;
+    border: 1px solid #aaa;
+    font-size: 0.87rem;
   }
 
-  .offday-row td { background: #fffde6; }
-  .offday-names { color: #b30000; font-weight: 700; }
+  .offday-row td { background: var(--green-pale); }
+  .offday-names { color: #c0392b; font-weight: 600; }
 
   .leave-header-row td {
-    background: var(--aarong-green);
+    background: var(--green-mid);
     color: white;
     font-weight: 700;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     letter-spacing: 1px;
-    padding: 8px;
-    font-family: 'Cinzel', serif;
   }
 
-  .leave-row { background: #fffdf6; }
-  .leave-row td:first-child { font-weight: 700; color: #111; }
+  .leave-row { background: #fff9e6; }
+  .leave-row td:first-child { font-weight: 600; }
 
   .trail-header-row td {
-    background: #cd7f32;
+    background: var(--orange);
     color: white;
     font-weight: 700;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     letter-spacing: 1px;
-    padding: 8px;
-    font-family: 'Cinzel', serif;
   }
 
-  .trail-row { background: #f4f9f6; }
+  .trail-row { background: #f0f8ff; }
+  .trail-row td { padding: 10px; font-weight: 600; }
 
   .date-cell {
-    background: var(--aarong-green);
-    color: var(--aarong-gold);
+    background: var(--green-mid);
+    color: var(--yellow);
     text-align: center;
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
     letter-spacing: 2px;
     padding: 14px;
-    border-top: 3px solid var(--aarong-gold);
-    margin-top: auto;
-    font-weight: bold;
+    border-top: 2px solid var(--green-dark);
   }
 
-  /* ===== MODAL & CHIPS ===== */
   .modal-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,0.7);
     z-index: 100;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
   }
-  .modal-overlay.open { display: flex; opacity: 1; }
+  .modal-overlay.open { display: flex; }
 
   .modal {
-    background: var(--white);
-    border: 3px solid var(--aarong-green);
-    border-radius: 4px;
-    padding: 24px;
+    background: #0f3d0f;
+    border: 2px solid var(--yellow);
+    border-radius: 12px;
+    padding: 24px 28px;
     width: 95%;
     max-width: 540px;
-    color: #333;
+    color: var(--white);
     max-height: 90vh;
     overflow-y: auto;
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
   }
-  .modal-overlay.open .modal { transform: scale(1); }
 
   .modal h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--aarong-green);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-    border-bottom: 2px solid var(--aarong-gold);
-    padding-bottom: 5px;
+    font-family: 'Teko', sans-serif;
+    color: var(--yellow);
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
   }
 
   .modal label {
     display: block;
-    color: var(--aarong-green);
-    margin-top: 14px;
-    margin-bottom: 5px;
-    font-weight: 700;
+    color: var(--green-light);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-weight: 600;
     font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
   }
 
   .modal input, .modal textarea, .modal select {
     width: 100%;
-    background: #fafafa;
-    color: #222;
-    border: 1px solid #999;
-    border-radius: 4px;
-    padding: 10px 12px;
+    background: #1a5c1a;
+    color: #fff;
+    border: 1px solid var(--green-mid);
+    border-radius: 5px;
+    padding: 7px 10px;
     font-family: 'Barlow', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     outline: none;
-  }
-  .modal input:focus, .modal textarea:focus, .modal select:focus {
-    border-color: var(--aarong-green);
   }
 
   .modal textarea { resize: vertical; min-height: 60px; }
-  .modal-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
-  
-  .btn-save { background: var(--aarong-green); color: white; border: none; border-radius: 4px; padding: 10px 24px; font-weight: 700; cursor: pointer; font-family: 'Cinzel', serif; }
-  .btn-cancel { background: #eedddd; color: #7c1a1a; border: 1px solid #ccaaaa; border-radius: 4px; padding: 10px 24px; font-weight: 700; cursor: pointer; font-family: 'Cinzel', serif; }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    justify-content: flex-end;
+  }
+
+  .btn-save {
+    background: var(--green-dark);
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+  }
+  .btn-cancel {
+    background: #6b1a1a;
+    color: #fff;
+    border: 2px solid #c0392b;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+  }
 
   .name-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 6px;
-    background: #f0f4f2;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px dashed var(--aarong-green);
+    margin-top: 4px;
   }
 
   .chip {
-    background: var(--white);
-    border: 1px solid #bbb;
+    background: #1a5c1a;
+    border: 1px solid var(--green-mid);
     border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: 3px 10px;
+    font-size: 0.82rem;
     cursor: pointer;
-    color: #444;
+    color: #cfc;
     user-select: none;
-    transition: all 0.2s ease;
+    transition: background 0.15s;
   }
-  
-  .chip.selected { 
-    background: var(--aarong-green); 
-    border-color: var(--aarong-green); 
-    color: var(--white); 
-    font-weight: 700;
-  }
-
-  @keyframes cardEntrance {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes rowAppear {
-    from { opacity: 0; transform: translateX(-5px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
+  .chip.selected { background: var(--green-dark); border-color: var(--yellow); color: var(--yellow); font-weight: 600; }
 </style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-<!-- ===== AARONG HEADER BRANDING ===== -->
-<div class="brand-header">
-  <div class="brand-logo">aarong</div>
-  <div class="brand-tagline">Tradition Meets Daily Duty</div>
-  <div class="roster-title">📋 Children Duty Roster</div>
-</div>
+<h1>📋 CHILDREN DUTY ROSTER</h1>
 
 <div class="controls">
   <label>Day:</label>
@@ -433,7 +343,7 @@
     <option value="Saturday">Saturday</option>
     <option value="Sunday">Sunday</option>
     <option value="Monday">Monday</option>
-    <option value="Tuesday">Tuesday</option>
+    <option value="Tuesday" selected>Tuesday</option>
     <option value="Wednesday">Wednesday</option>
     <option value="Thursday">Thursday</option>
     <option value="Friday">Friday</option>
@@ -443,12 +353,11 @@
   <input type="date" id="dateInput">
 
   <button onclick="openEditModal()">✏️ Edit</button>
-  <button class="btn-download" onclick="downloadRosterImage()">📥 Download Image</button>
 </div>
 
 <div class="roster-card" id="rosterCard"></div>
 
-<!-- ===== EDIT MODAL ===== -->
+<!-- EDIT MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <h2>✏️ Edit Day Data</h2>
@@ -484,108 +393,149 @@
 </div>
 
 <script>
-// পেজে ঢোকা মাত্রই বা রিফ্রেশ দিলেই LocalStorage ক্লিয়ার হয়ে যাবে
-localStorage.removeItem('rosterData');
-localStorage.removeItem('lastSelectedDay');
-localStorage.setItem('isRefreshed', 'true');
-
 const ALL_CHILDREN = [
   "Onti","Rida","Runu","Anika","Hasib","Saied","Suikraching",
   "Juie","Afrain","Nafisa","Ashik","Abrar","Mou","Arpita","Anila","Ratan","Alvee",
   "Yeasmin","Sumaya","Jiniya","Arifa","Ashiq"
 ];
 
-// আপনার অরিজিনাল ডিফল্ট ডাটা ব্যাকআপ
-let defaultData = {
-  Saturday: { morning: ["Juie","Yeasmin","Rida","Anila","Sumaya","Afrain","Alvee"], evening: ["Runu","Mou","Onti","Jiniya","Nafisa","Arifa","Saied","Ashik","Suikraching"], offday: [], leave: {} },
-  Sunday: { morning: ["Yeasmin","Onti","Nafisa","Saied","Anika","Ashik","Suikraching"], evening: ["Juie","Arifa","Afrain","Runu","Arpita","Jiniya","Sumaya","Alvee","Ratan"], offday: [], leave: {} },
-  Monday: { morning: ["Mou","Juie","Sumaya","Runu","Ratan","Alvee","Afrain"], evening: ["Yeasmin","Jiniya","Suikraching","Onti","Ashik","Arpita","Hasib","Anika","Anila","Rida"], offday: [], leave: {} },
-  Tuesday: { morning: ["Onti","Rida","Runu","Anika","Hasib","Saied","Suikraching"], evening: ["Juie","Afrain","Nafisa","Ashik","Mou","Arpita","Anila","Ratan","Alvee"], offday: ["Yeasmin","Sumaya","Jiniya"], leave: { "Arpita": "L18,E19,M22", "ratan": "L18,L20(bh)" } },
-  Wednesday: { morning: ["Juie","Yeasmin","Hasib","Nafisa","Anila","Sumaya","Alvee"], evening: ["Mou","Saied","Arifa","Rida","Jiniya","Runu","Anika","Arpita","Suikraching","Ratan"], offday: [], leave: {} },
-  Thursday: { morning: ["Mou","Hasib","Rida","Arpita","Yeasmin","Anika","Saied"], evening: ["Onti","Sumaya","Runu","Nafisa","Anila","Afrain","Jiniya","Arifa","Ashiq","Ratan"], offday: [], leave: {} },
-  Friday: { morning: ["Onti","Mou","Afrain","Anila","Nafisa","Suikraching","Ratan"], evening: ["Sumaya","Jiniya","Saied","Juie","Arifa","Yeasmin","Arpita","Ashik","Rida","Hasib","Anika","Alvee"], offday: [], leave: {} }
+let rosterData = {
+  Saturday: {
+    morning: ["Juie","Yeasmin","Rida","Anila","Sumaya","Afrain","Alvee"],
+    evening: ["Runu","Mou","Onti","Jiniya","Nafisa","Arifa","Saied","Ashik","Suikraching"],
+    offday: ["Anika","Arpita","Ratan"],
+    leave: {}
+  },
+  Sunday: {
+    morning: ["Yeasmin","Onti","Nafisa","Saied","Anika","Ashik","Suikraching"],
+    evening: ["Juie","Arifa","Afrain","Runu","Arpita","Jiniya","Sumaya","Alvee","Ratan"],
+    offday: ["Mou","Hasib","Anila","Rida"],
+    leave: {}
+  },
+  Monday: {
+    morning: ["Mou","Juie","Sumaya","Runu","Ratan","Alvee","Afrain"],
+    evening: ["Yeasmin","Jiniya","Suikraching","Onti","Ashik","Arpita","Hasib","Anika","Anila","Rida"],
+    offday: ["Saied","Arifa","Nafisa"],
+    leave: {}
+  },
+  Tuesday: {
+    morning: ["Onti","Rida","Runu","Anika","Hasib","Saied","Suikraching"],
+    evening: ["Juie","Afrain","Nafisa","Ashik","Mou","Arpita","Anila","Ratan","Alvee"],
+    offday: ["Yeasmin","Sumaya","Jiniya"],
+    leave: { "Arpita": "L18,E19,M22", "ratan": "L18,L20(bh)" }
+  },
+  Wednesday: {
+    morning: ["Juie","Yeasmin","Hasib","Nafisa","Anila","Sumaya","Alvee"],
+    evening: ["Mou","Saied","Arifa","Rida","Jiniya","Runu","Anika","Arpita","Suikraching","Ratan"],
+    offday: ["Ashik","Afrain","Onti"],
+    leave: {}
+  },
+  Thursday: {
+    morning: ["Mou","Hasib","Rida","Arpita","Yeasmin","Anika","Saied"],
+    evening: ["Onti","Sumaya","Runu","Nafisa","Anila","Afrain","Jiniya","Arifa","Ashiq","Ratan"],
+    offday: ["Juie","Suikraching","Alvee"],
+    leave: {}
+  },
+  Friday: {
+    morning: ["Onti","Mou","Afrain","Anila","Nafisa","Suikraching","Ratan"],
+    evening: ["Sumaya","Jiniya","Saied","Juie","Arifa","Yeasmin","Arpita","Ashik","Rida","Hasib","Anika","Alvee"],
+    offday: ["Runu"],
+    leave: {}
+  }
 };
 
-let rosterData = defaultData;
+function getTodayDate() {
+  return new Date().toISOString().split('T')[0];
+}
 
-function formatDisplayDate(dateStr) {
-  if (!dateStr) return '';
+function formatDisplayDate(dateStr, dayName) {
+  if (!dateStr) return dayName;
   const d = new Date(dateStr + 'T00:00:00');
   const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   return d.toLocaleDateString('en-US', opts);
 }
 
 function render() {
-  const card = document.getElementById('rosterCard');
-  card.classList.remove('run-animation');
-
   const day = document.getElementById('daySelect').value;
   const dateVal = document.getElementById('dateInput').value;
   const data = rosterData[day];
-
-  if (!data) return;
 
   const morningSet = new Set(data.morning);
   const eveningSet = new Set(data.evening);
 
   let morningRows = '';
-  let bothRows = '';
   let eveningRows = '';
-  let morningTotal = data.morning ? data.morning.length : 0;
-  let eveningTotal = data.evening ? data.evening.length : 0;
-  let index = 0;
+  let morningCount = 0, eveningCount = 0;
 
-  ALL_CHILDREN.forEach(name => {
-    const isMorning = morningSet.has(name);
-    const isEvening = eveningSet.has(name);
-    let delay = (index * 0.02) + 's';
+  data.morning.forEach(name => {
+    morningRows += `<tr class="row-morning">
+      <td>${name}</td>
+      <td>1</td>
+      <td></td>
+    </tr>`;
+    morningCount++;
+  });
 
-    if (isMorning && isEvening) {
-      bothRows += `<tr class="row-both" style="animation-delay: ${delay}"><td>${name}</td><td>1</td><td>1</td></tr>`;
-      index++;
-    } else if (isMorning) {
-      morningRows += `<tr class="row-morning" style="animation-delay: ${delay}"><td>${name}</td><td>1</td><td></td></tr>`;
-      index++;
-    } else if (isEvening) {
-      eveningRows += `<tr class="row-evening" style="animation-delay: ${delay}"><td>${name}</td><td></td><td>1</td></tr>`;
-      index++;
+  data.evening.forEach(name => {
+    if (!morningSet.has(name)) {
+      eveningRows += `<tr class="row-evening">
+        <td>${name}</td>
+        <td></td>
+        <td>1</td>
+      </tr>`;
+      eveningCount++;
     }
   });
 
-  let tableRows = morningRows + bothRows + eveningRows;
+  let bothRows = '';
+  data.morning.forEach(name => {
+    if (eveningSet.has(name)) {
+      bothRows += `<tr style="background:#ffe0b2;">
+        <td>${name}</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>`;
+    }
+  });
+
   let leaveRows = '';
-  const leaveEntries = data.leave ? Object.entries(data.leave) : [];
-  
+  const leaveEntries = Object.entries(data.leave);
   if (leaveEntries.length === 0) {
-    leaveRows = `<tr class="leave-row"><td colspan="2" style="text-align:center;color:#777;font-style:italic;">No leave data</td></tr>`;
+    leaveRows = `<tr class="leave-row"><td colspan="2" style="text-align:center;color:#aaa;font-style:italic;">No leave data</td></tr>`;
   } else {
     leaveEntries.forEach(([name, info]) => {
       leaveRows += `<tr class="leave-row"><td>${name}</td><td>${info}</td></tr>`;
     });
   }
 
-  const offdayNames = (data.offday && data.offday.length > 0) ? data.offday.join(', ') : '—';
-  const dateDisplay = dateVal ? formatDisplayDate(dateVal) : day;
+  const offdayNames = data.offday.length > 0 ? data.offday.join(', ') : '—';
+  const dateDisplay = dateVal ? formatDisplayDate(dateVal, day) : day;
 
-  card.innerHTML = `
+  document.getElementById('rosterCard').innerHTML = `
     <div class="roster-body">
       <div class="left-section">
         <div class="section-header">CHILDREN</div>
         <table class="children-table">
           <thead>
-            <tr><th>Name</th><th>Morning</th><th>Evening</th></tr>
+            <tr>
+              <th>Name</th>
+              <th>Morning</th>
+              <th>Evening</th>
+            </tr>
           </thead>
           <tbody>
-            ${tableRows}
-            <tr class="row-zero" style="animation-delay: ${(index * 0.02) + 's'}"><td>0</td><td></td><td></td></tr>
-            <tr class="row-total-label" style="animation-delay: ${((index + 1) * 0.02) + 's'}">
+            ${morningRows}
+            ${bothRows}
+            ${eveningRows}
+            <tr class="row-zero"><td>0</td><td></td><td></td></tr>
+            <tr class="row-total-label">
               <td>Total</td>
-              <td>${morningTotal}</td>
-              <td>${eveningTotal}</td>
+              <td>${morningCount}</td>
+              <td>${eveningCount}</td>
             </tr>
-            <tr class="row-grand" style="animation-delay: ${((index + 2) * 0.02) + 's'}">
+            <tr class="row-grand">
               <td colspan="2" style="text-align:right;">TOTAL=</td>
-              <td>${morningTotal + eveningTotal}</td>
+              <td>${morningCount + eveningCount}</td>
             </tr>
           </tbody>
         </table>
@@ -594,46 +544,27 @@ function render() {
       <div class="right-section">
         <div class="offday-header">OFFDAY</div>
         <table class="right-table">
-          <thead><tr><th>Dep</th><th>Name</th></tr></thead>
+          <thead>
+            <tr><th>Dep</th><th>Name</th></tr>
+          </thead>
           <tbody>
-            <tr class="offday-row"><td>CHILDREN</td><td class="offday-names">${offdayNames}</td></tr>
-            <tr><td colspan="2" style="background:#fff;height:6px;"></td></tr>
+            <tr class="offday-row">
+              <td>CHILDREN</td>
+              <td class="offday-names">${offdayNames}</td>
+            </tr>
+            <tr><td colspan="2" style="background:#e8f5e8;height:6px;"></td></tr>
             <tr class="leave-header-row"><td colspan="2">Leave Data</td></tr>
             ${leaveRows}
-            <tr><td colspan="2" style="background:#fff;height:6px;"></td></tr>
+            <tr><td colspan="2" style="background:#e8f5e8;height:6px;"></td></tr>
             <tr class="trail-header-row"><td colspan="2">Trail</td></tr>
             <tr class="trail-row"><td>Morning</td><td></td></tr>
             <tr class="trail-row"><td>Evening</td><td></td></tr>
           </tbody>
         </table>
-        <div class="date-cell" id="bottomDateCell">${dateDisplay}</div>
+        <div class="date-cell">${dateDisplay}</div>
       </div>
     </div>
   `;
-
-  setTimeout(() => { card.classList.add('run-animation'); }, 10);
-}
-
-function downloadRosterImage() {
-  const rosterCard = document.getElementById('rosterCard');
-  const selectedDay = document.getElementById('daySelect').value;
-  const selectedDate = document.getElementById('dateInput').value || 'roster';
-
-  rosterCard.classList.remove('run-animation');
-  rosterCard.style.opacity = '1'; 
-
-  html2canvas(rosterCard, {
-    scale: 2, 
-    backgroundColor: '#ffffff',
-    useCORS: true,
-    logging: false
-  }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = `Aarong_Roster_${selectedDay}_${selectedDate}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-    rosterCard.classList.add('run-animation');
-  });
 }
 
 function openEditModal() {
@@ -641,39 +572,31 @@ function openEditModal() {
   document.getElementById('editDay').value = day;
   buildChips(day);
   const data = rosterData[day];
-  document.getElementById('editOffday').value = data.offday ? data.offday.join(',') : '';
-  document.getElementById('editLeave').value = data.leave ? Object.entries(data.leave).map(([k,v])=>`${k} ${v}`).join('\n') : '';
-  
-  const modalOverlay = document.getElementById('modalOverlay');
-  modalOverlay.style.display = 'flex';
-  setTimeout(() => { modalOverlay.classList.add('open'); }, 10);
+  document.getElementById('editOffday').value = data.offday.join(',');
+  document.getElementById('editLeave').value = Object.entries(data.leave).map(([k,v])=>`${k} ${v}`).join('\n');
+  document.getElementById('modalOverlay').classList.add('open');
 }
 
 function closeEditModal() {
-  const modalOverlay = document.getElementById('modalOverlay');
-  modalOverlay.classList.remove('open');
-  setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
+  document.getElementById('modalOverlay').classList.remove('open');
 }
 
 function buildChips(day) {
   const data = rosterData[day];
   const morningDiv = document.getElementById('morningChips');
   const eveningDiv = document.getElementById('eveningChips');
-
   morningDiv.innerHTML = '';
   eveningDiv.innerHTML = '';
 
   ALL_CHILDREN.forEach(name => {
-    const mSelect = data.morning && data.morning.includes(name);
     const mChip = document.createElement('span');
-    mChip.className = 'chip' + (mSelect ? ' selected' : '');
+    mChip.className = 'chip' + (data.morning.includes(name) ? ' selected' : '');
     mChip.textContent = name;
     mChip.onclick = () => mChip.classList.toggle('selected');
     morningDiv.appendChild(mChip);
 
-    const eSelect = data.evening && data.evening.includes(name);
     const eChip = document.createElement('span');
-    eChip.className = 'chip' + (eSelect ? ' selected' : '');
+    eChip.className = 'chip' + (data.evening.includes(name) ? ' selected' : '');
     eChip.textContent = name;
     eChip.onclick = () => eChip.classList.toggle('selected');
     eveningDiv.appendChild(eChip);
@@ -688,84 +611,29 @@ function saveEdit() {
   const offday = offdayRaw.split(',').map(s=>s.trim()).filter(Boolean);
   const leaveRaw = document.getElementById('editLeave').value;
   const leave = {};
-
   leaveRaw.split('\n').forEach(line => {
     const parts = line.trim().split(' ');
     if (parts.length >= 2) {
-      const name = parts[0];
-      const info = parts.slice(1).join(' ');
-      leave[name] = info;
+      leave[parts[0]] = parts.slice(1).join(' ');
     }
   });
-
   rosterData[day] = { morning, evening, offday, leave };
-  
-  // এডিট করার পর সাময়িক সেশনে ডেটা সেভ থাকবে রিফ্রেশ না দেওয়া পর্যন্ত
-  localStorage.setItem('rosterData', JSON.stringify(rosterData));
-
   document.getElementById('daySelect').value = day;
   closeEditModal();
   render();
 }
 
-function initApp() {
-  // বাংলাদেশ টাইম জোনে আজকের দিন সেট করা
-  const bdTimeString = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
-  const bdDate = new Date(bdTimeString);
-
-  const year = bdDate.getFullYear();
-  const month = String(bdDate.getMonth() + 1).padStart(2, '0');
-  const day = String(bdDate.getDate()).padStart(2, '0');
-  const formattedDate = `${year}-${month}-${day}`;
-
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const dayName = daysOfWeek[bdDate.getDay()];
-
-  document.getElementById('dateInput').value = formattedDate;
-  document.getElementById('daySelect').value = dayName;
-  
-  render();
-}
-
-initApp();
-
-document.getElementById('dateInput').addEventListener('change', function() {
-  if (this.value) {
-    const d = new Date(this.value + 'T00:00:00');
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    document.getElementById('daySelect').value = daysOfWeek[d.getDay()];
-  }
-  render();
-});
-
-document.getElementById('daySelect').addEventListener('change', function() {
-  const selectedDay = this.value;
-  const currentDateVal = document.getElementById('dateInput').value;
-  
-  if (currentDateVal) {
-    const currentD = new Date(currentDateVal + 'T00:00:00');
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const currentDayIndex = currentD.getDay();
-    const targetDayIndex = daysOfWeek.indexOf(selectedDay);
-    
-    let dayDiff = targetDayIndex - currentDayIndex;
-    currentD.setDate(currentD.getDate() + dayDiff);
-    
-    const year = currentD.getFullYear();
-    const month = String(currentD.getMonth() + 1).padStart(2, '0');
-    const day = String(currentD.getDate()).padStart(2, '0');
-    
-    document.getElementById('dateInput').value = `${year}-${month}-${day}`;
-  }
-  render();
-});
-
+document.getElementById('dateInput').value = getTodayDate();
+document.getElementById('daySelect').addEventListener('change', render);
+document.getElementById('dateInput').addEventListener('change', render);
 document.getElementById('editDay').addEventListener('change', function() {
   buildChips(this.value);
   const data = rosterData[this.value];
-  document.getElementById('editOffday').value = data.offday ? data.offday.join(',') : '';
-  document.getElementById('editLeave').value = data.leave ? Object.entries(data.leave).map(([k,v])=>`${k} ${v}`).join('\n') : '';
+  document.getElementById('editOffday').value = data.offday.join(',');
+  document.getElementById('editLeave').value = Object.entries(data.leave).map(([k,v])=>`${k} ${v}`).join('\n');
 });
+
+render();
 </script>
 </body>
 </html>
